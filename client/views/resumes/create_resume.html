@@ -1,0 +1,24 @@
+<template name="createResume">
+	<h1>Series of Forms</h1>
+	<div class="container">
+		<div class="row card"> 
+			<div class="col-md-6 col-md-offset-3"> 
+				<!-- {{> quickForm collection="Resumes" id='createResume' type="insert" class="col-md-6"}} -->
+				{{#autoForm collection="Resumes" id="createResume" type="insert"}}
+					{{> afQuickField name="emailAddress" class="col-md-6" placeholder="Please enter your email address" label=false}}
+					{{> afQuickField name="phoneNumber" class="col-md-6" placeholder="Please enter your phone number" label=false}}
+					{{> afQuickField name="twitterHandle" class="col-md-6" placeholder="Please enter your twitter handle" label=false}}
+					{{> afQuickField name="linkedInName" class="col-md-6" placeholder="Please enter your LinkedIn Name" label=false}}
+					{{> afQuickField name="homeAddress" class="col-md-6" placeholder="Please enter your home address" label=false}}
+					{{> afQuickField name="personalSummary" class="col-md-6" placeholder="Give a personal Summary of yourself" label=false type="textarea"}}
+					{{> afQuickField name="education" class="col-md-6" placeholder="Please enter your home address" label=false}}
+					{{> afQuickField name="personalData" class="col-md-6" placeholder="Please enter your home address" label=false}}
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+					<br />
+				{{/autoForm}}
+			</div>
+		</div>
+	</div>
+</template>
