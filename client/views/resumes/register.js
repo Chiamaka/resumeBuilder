@@ -33,7 +33,7 @@ Template.login.events({
 			if(err){
 				Session.set('loginErrorMessage', "Your email address or password is wrong!");
 			}else{
-				Router.go('/create');
+				Router.go('/');
 			}
 		});
 	}
@@ -58,5 +58,12 @@ Template.index.events({
 Template.index.helpers({
 	currentUserEmail: function(){
 		return Meteor.user().emails[0].address;
+	},
+	showResumeButton: function(){
+		if (Resumes.find({owner: Meteor.userId()}).count() > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 });

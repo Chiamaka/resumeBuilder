@@ -35,8 +35,17 @@
 		<div class="buttons">
 			<ul>
 			{{#if currentUser}}
-				<li><a class="hvr-shutter-in-vertical" href="{{pathFor 'createResume'}}">Get Started</a></li>
+				{{#if showResumeButton}}
+					<li><a class="hvr-shutter-in-vertical" href="{{pathFor 'resume'}}">See Resume</a></li>
+				{{else}}
+					<li><a class="hvr-shutter-in-vertical" href="{{pathFor 'createResume'}}">Get Started</a></li>
+				{{/if}}
 			{{/if}}
+
+			<!-- {{#if showResumeButton}}
+				<li><a class="hvr-shutter-in-vertical" href="{{pathFor 'resume'}}">See Resume</a></li>
+			{{/if}} -->
+				
 			</ul>
 			
 		</div>

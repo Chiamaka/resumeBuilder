@@ -8,5 +8,8 @@ Images.allow({
   },
   download: function(userId) {
     return true;
+  },
+  update: function(userId, doc){
+  	return true;
   }
 });

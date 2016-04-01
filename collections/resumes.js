@@ -6,6 +6,11 @@ Resumes.allow({
 	}
 });
 Resumes.attachSchema(new SimpleSchema({
+	name: {
+		type: String,
+		label: "Full Name",
+		max: 200
+	},
 	emailAddress: {
 		type: String,
 		label: "Email Address",
@@ -33,7 +38,26 @@ Resumes.attachSchema(new SimpleSchema({
 		label: "Personal Summary",
 		max: 500
 	},
-	education: {
+	photo: {
+		type: String,
+		autoform: {
+			afFieldInput: {
+				type: 'fileUpload',
+				collection: 'Images',
+				label: 'Choose Photo',
+				 onAfterInsert: function() {
+          return function(err, fileObj) {
+            if (err) {
+              return alert('Error');
+            } else {
+              return alert('Upload successful');
+            }
+          };
+        }
+			}
+		}
+	},
+	'education': {
 		type: Object
 	},
 	'education.secondarySchool': {
@@ -49,7 +73,8 @@ Resumes.attachSchema(new SimpleSchema({
 		type: Object
 	},
 	'education.certification.$.certificate': {
-		type: String
+		type: String,
+		label: "High School certificate"
 	},
 	'education.certification.$.year': {
 		type: String
@@ -80,39 +105,39 @@ Resumes.attachSchema(new SimpleSchema({
 	'education.MSC.$.year': {
 		type: String
 	},
-	'education.workExperience':{
+	'leadershipExperience':{
 		type: Array,
 		optional: true
 	},
-	'education.workExperience.$':{
+	'leadershipExperience.$':{
 		type: Object
 	},
-	'education.workExperience.$.company':{
+	'leadershipExperience.$.position':{
 		type: String
 	},
-	'education.workExperience.$.position':{
+	'leadershipExperience.$.yearHeld':{
 		type: String
 	},
-	'education.workExperience.$.timeSpent':{
+	'leadershipExperience.$.roles':{
 		type: String
 	},
-	'education.workExperience.$.roles':{
-		type: String
-	},
-	'education.leadershipExperience':{
+	workExperience:{
 		type: Array,
 		optional: true
 	},
-	'education.leadershipExperience.$':{
+	'workExperience.$':{
 		type: Object
 	},
-	'education.leadershipExperience.$.position':{
+	'workExperience.$.company':{
 		type: String
 	},
-	'education.leadershipExperience.$.yearHeld':{
+	'workExperience.$.position':{
 		type: String
 	},
-	'education.leadershipExperience.$.roles':{
+	'workExperience.$.timeSpent':{
+		type: String
+	},
+	'workExperience.$.roles':{
 		type: String
 	},
 	personalData: {
@@ -142,15 +167,18 @@ Resumes.attachSchema(new SimpleSchema({
 	'personalData.$.languages': {
 		type: String
 	},
-	'personalData.hobbies.$': {
-		type: Array
-	},
-	'personalData.hobbies.$': {
+	'personalData.$.hobbies.$': {
 		type: Object
 	},
-	'personalData.hobbies.$.hobbies': {
+	'personalData.$.hobbies.$.favoriteThing': {
 		type: String
 	},
+	// 'personalData.hobbies.$': {
+	// 	type: Object
+	// },
+	// 'personalData.$.hobbies.$.hobbies': {
+	// 	type: String
+	// },
 
 	// 'workExperience.$.timeSpent':{
 	// 	type: String
