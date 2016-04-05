@@ -17,14 +17,6 @@
     dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
     dd { width: 600px; float: right; }
     dd.clear { float: none; margin: 0; height: 15px; }
-    @media print{    
-        .no-print, .no-print *{
-            display: none !important;
-        }
-        #page-wrap{
-            -webkit-print-color-adjust:exact;
-        }
-    }
 </style>
 <div id="page-wrap">
     {{#with entry}}
@@ -36,7 +28,7 @@
 
         <!-- Microformats! -->
 
-        <h1 class="fn">{{name}}&nbsp; <a href={{pathFor 'editResume'}} id="editBtn" class="no-print"><i class="fa fa-edit"></i></a></h1>
+        <h1 class="fn">{{name}}</h1>
 
         <p>
             <i class="fa fa-mobile fa-lg"></i> {{phoneNumber}} <br />
@@ -79,12 +71,14 @@
 
            <dd class="clear"></dd>
 
-        <dt>Skills</dt>
+        <!-- <dt>Skills</dt>
         <dd>
-            {{#each skills}}
-                <h6><strong>{{skill}}</strong></h6>
-            {{/each}}
-        </dd>
+            <h2>Office skills</h2>
+            <p>Office and records management, database administration, event organization, customer support, travel coordination</p>
+            
+            <h2>Computer skills</h2>
+            <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows</p>
+        </dd> -->
         
         <dd class="clear"></dd>
         
@@ -146,8 +140,7 @@
     <div class="clear"></div>
     {{/with}}
     <div class="text-center">
-        <!-- <button class="btn btn-success" id="pdfGenerator"><i class="fa fa-download"></i>&nbsp;Download as PDF</button> -->
-        <a href="javascript:void(0)" onclick="javascript:window.print();" class="btn btn-success no-print" id="pdfGenerator"><i class="fa fa-download"></i>&nbsp; Download as PDF</a>
+        <button class="btn btn-success" id="pdfGenerator"><i class="fa fa-download"></i>&nbsp;Download as PDF</button>
     </div>  
 </div>
 </template>

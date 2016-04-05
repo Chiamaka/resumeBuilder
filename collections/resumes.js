@@ -3,6 +3,9 @@ Resumes = new Meteor.Collection('resumes');
 Resumes.allow({
 	insert: function(){
 		return true;
+	},
+	update: function(){
+		return true;
 	}
 });
 Resumes.attachSchema(new SimpleSchema({
@@ -138,6 +141,15 @@ Resumes.attachSchema(new SimpleSchema({
 		type: String
 	},
 	'workExperience.$.roles':{
+		type: String
+	},
+	skills: {
+		type:Array
+	},
+	'skills.$':{
+		type: Object
+	},
+	'skills.$.skill':{
 		type: String
 	},
 	personalData: {
